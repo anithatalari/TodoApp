@@ -1,0 +1,25 @@
+<template>
+    <div class="divHeader">
+    <h1>${heading}</h1>
+    <input type="text" id="myInput" value.bind="todoDescription" keyup.trigger="onDescriptionKeyup($event)">
+</div>
+<div class="divBody">
+    <ul>
+    
+        <li repeat.for ="task of tasks" class="${task.completed ? 'taskdone' : '' }">
+            <span>
+                <input type="checkbox" checked.bind="task.completed">
+            </span>
+            <span click.trigger="updateTask(task.id,task.completed,task.title)" >${task.title}</span>
+            <button click.trigger="removeTask(task.id)">X</button>
+        
+        </li>
+    </ul>
+</div>
+<div class="divFooter">
+    <button click.trigger="allTask()">All</button>
+    <button click.trigger="activeTask()">Active </button>
+    <button click.trigger="completedTask()">Completed</button>
+    <button click.trigger="deleteAllTasks()">DeleteAll</button>
+</div>
+</template>
